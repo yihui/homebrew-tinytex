@@ -1,22 +1,20 @@
 class Tinytex < Formula
-  desc "Tiny and easy-to-maintain LaTeX distribution based on TeXLive"
-  homepage "https://github.com/yihui/tinytex"
-  url "https://github.com/yihui/tinytex/archive/v0.1.tar.gz"
-  sha256 "65ca0d9fdd99064c7453af6f12825598170d0ef548afc1dcd28142f14e7dd8ed"
-  head "https://github.com/yihui/tinytex/archive/master.tar.gz"
+  desc "Tiny and easy-to-maintain LaTeX distribution based on TeX Live"
+  homepage "https://yihui.org/tinytex/"
+  url "https://github.com/yihui/tinytex-releases/releases/download/v2020.09/TinyTeX-1.tgz"
+  sha256 "190e33808a6f7995335fc45bb4fee481deada99e3ca3110803356efc072fe87b"
+  head "https://yihui.org/tinytex/TinyTeX-1.tgz"
+  license "GPL-2.0-or-later"
 
   def install
-    cd "tools" do
-      system "make"
-      system "make", "bin"
-      prefix.install Dir["texlive/", "bin/"]
-    end
+    system "cd bin && ln -s */* ./"
+    prefix.install Dir["*"]
   end
 
   def post_install
-    # symlink texlive/bin/*/* to bin again (may need this after `tlmgr install`)
+    # symlink bin/*/* to bin again (may need this after `tlmgr install`)
     cd bin.to_s do
-      system "rm * && ln -s ../texlive/bin/*/* ./"
+      system "find . -type l -depth 1 -delete && ln -s */* ./"
     end
   end
 
