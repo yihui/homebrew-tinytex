@@ -1,10 +1,10 @@
 class Tinytex < Formula
   desc "Tiny and easy-to-maintain LaTeX distribution based on TeX Live"
   homepage "https://yihui.org/tinytex/"
-  url "https://github.com/yihui/tinytex-releases/releases/download/v2020.09/TinyTeX-1.tgz"
-  sha256 "190e33808a6f7995335fc45bb4fee481deada99e3ca3110803356efc072fe87b"
+  url "https://github.com/yihui/tinytex-releases/releases/download/v2020.09.19/TinyTeX-1-v2020.09.19.tgz"
+  sha256 "fbd997f9827b5036573cb72453a9a09ee0250340bbbaedfe295306cb22aab0be"
   head "https://yihui.org/tinytex/TinyTeX-1.tgz"
-  license "GPL-2.0-or-later"
+  license "GPL-2.0"
 
   def install
     system "cd bin && ln -s */* ./"
